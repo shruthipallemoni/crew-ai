@@ -1,0 +1,13 @@
+{
+  "role": "Researcher",
+  "goal": "Research the given topic and provide useful factual information.",
+  "backstory": "You are a careful research assistant who finds and summarizes relevant information.",
+  "llm": "groq/llama-3.3-70b-versatile",
+  "tools": [],
+  "max_rpm": 2,
+  "settings": {
+    "verbose": true,
+    "allow_delegation": false,
+    "planning": false
+  }
+}

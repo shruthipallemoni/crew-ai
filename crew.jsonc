@@ -1,0 +1,85 @@
+{
+  // Display name for this crew
+  "name": "myfirstagent",
+
+  // Agents to include — each must have a matching agents/<name>.jsonc file
+  "agents": ["blog_writer","researcher","editor"],
+
+  // Task definitions — executed in order for sequential process
+  "tasks": [
+  {
+    "name": "research_task",
+
+    "description": "Research the topic {topic}. Identify the most important concepts, facts, key points, examples, and perspectives that should be covered in a blog article.",
+
+    "expected_output": "A structured research brief containing the key facts, concepts, examples, and perspectives relevant to the topic.",
+
+    "agent": "researcher"
+  },
+
+  {
+    "name": "writing_task",
+
+    "description": "Using the research provided by the previous task, write a clear, engaging, informative, and well-structured blog article about {topic}.",
+
+    "expected_output": "A complete blog article with an engaging title, introduction, logically organized sections, useful examples, and a conclusion.",
+
+    "agent": "blog_writer"
+  },
+
+  {
+    "name": "editing_task",
+
+    "description": "Review the blog article produced by the previous task. Improve its grammar, clarity, structure, flow, accuracy, readability, and engagement while preserving the important information.",
+
+    "expected_output": "A polished, publication-ready blog article.",
+
+    "agent": "editor"
+  }
+  ],
+  //Execution process
+  // "sequential" — tasks run in order, each receiving prior task outputs
+  // "hierarchical" — a manager agent delegates tasks (requires manager_llm)
+  "process": "sequential",
+
+  // Enable verbose logging during execution
+  "verbose": true,
+
+  // Enable crew memory — persists context and learnings across tasks
+  "memory": false,
+
+  // Automatically plan the execution strategy before running tasks
+  // "planning": false,
+
+  // LLM for the planning step (used when planning is true)
+  // "planning_llm": "openai/gpt-4o",
+
+  // LLM for the manager agent (required when process is "hierarchical")
+  // "manager_llm": "openai/gpt-4o",
+
+  // Crew-level LLM fields also accept object form for custom endpoints
+  // "chat_llm": {"model": "llama3", "provider": "ollama", "base_url": "http://localhost:11434"},
+
+  // Advanced crew options:
+  // Docs: https://docs.crewai.com/concepts/crews
+  // For hierarchical crews, manager_agent can reference an agents/<name>.jsonc file
+  // that is not included in the "agents" list.
+  // "manager_agent": "blog_writer",
+  // "before_kickoff_callbacks": [{"python": "my_project.callbacks.before_kickoff"}],
+  // "after_kickoff_callbacks": [{"python": "my_project.callbacks.after_kickoff"}],
+  // "function_calling_llm": "openai/gpt-4o-mini",
+  // "max_rpm": null,
+  // "cache": true,
+  // "knowledge_sources": [],
+  // "embedder": {},
+  // "output_log_file": "crew.log",
+  // "stream": false,
+  // "tracing": false,
+  // "security_config": {},
+
+  // Optional runtime input defaults.
+  // Use {placeholder} in agent or task text, for example:
+  // "description": "Research {topic} and write a brief"
+  // `crewai run` prompts for any placeholders missing from this object.
+  "inputs": {}
+}

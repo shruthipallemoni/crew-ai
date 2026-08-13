@@ -1,0 +1,24 @@
+[project]
+name = "myfirstagent"
+version = "0.1.0"
+description = "myfirstagent using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai-tools>=1.15.12",
+    "crewai[litellm,tools]>=1.15.12,<2.0.0",
+    "streamlit>=1.61.1",
+    "tavily-python>=0.7.27",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["agents", "crew.jsonc", "tools", "knowledge", "skills"]
+
+[tool.crewai]
+type = "crew"
+definition = "crew.jsonc"
+project_id = "e8aa3c0d-bfeb-4458-a3b9-3a61a028698f"
